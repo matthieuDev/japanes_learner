@@ -1,3 +1,6 @@
 **/.ipynb_checkpoints/
 **/*.npz
 **/*.csv
+
+test/
+image_letter_classifier/Untitled.ipynb
