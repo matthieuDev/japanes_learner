@@ -6,14 +6,14 @@ def load_numpy_file(filename) :
 
 def load_test() :
     return (
-        load_numpy_file('k49-test-imgs.npz'),
-        load_numpy_file('k49-test-labels.npz'),
+        load_numpy_file('data/k49-test-imgs.npz'),
+        load_numpy_file('data/k49-test-labels.npz'),
     )
 
 def load_train() :
     return (
-        load_numpy_file('k49-train-imgs.npz'),
-        load_numpy_file('k49-train-labels.npz'),
+        load_numpy_file('data/k49-train-imgs.npz'),
+        load_numpy_file('data/k49-train-labels.npz'),
     )
 def load_all() :
     '''

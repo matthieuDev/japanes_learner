@@ -4,4 +4,6 @@
 **/__pycache__/
 
 test/
+image_letter_classifier/data/
+
 image_letter_classifier/Untitled.ipynb
