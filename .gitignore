@@ -1,6 +1,7 @@
 **/.ipynb_checkpoints/
 **/*.npz
 **/*.csv
+**/__pycache__/
 
 test/
 image_letter_classifier/Untitled.ipynb
