@@ -16,6 +16,9 @@ def load_train() :
         load_numpy_file('k49-train-labels.npz'),
     )
 def load_all() :
+    '''
+    load all training and test data
+    '''
     (x_train, y_train) , (x_test, y_test) = load_train(), load_test()
 
     x_train = x_train / 255.0

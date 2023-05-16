@@ -15,6 +15,9 @@ def load_image(image_file, has_white_background = True) :
     return img
 
 def get_start_stop_true (arr_ok) :
+    '''
+    get the position of the first and last true element from 1-d bool array
+    '''
     good_start, good_end = 0,0
     start_stop = False
     for i, is_ok in enumerate(arr_ok):
@@ -27,6 +30,9 @@ def get_start_stop_true (arr_ok) :
     return good_start, good_end + 1
 
 def clean_image(img):
+    '''
+    
+    '''
     size_clean = 28
     clean_image = np.zeros((size_clean, size_clean), dtype=int)
     
