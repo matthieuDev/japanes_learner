@@ -3,13 +3,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-def load_image(image_file) :
+def load_image(image_file, has_white_background = True) :
+    '''
+    The training set is white on black. If the given image is black on white, use has_white_background to switch the white and black
+    '''
     img=mpimg.imread(image_file)
     img = img.mean(axis=2, dtype=int)
-    img = 255 - img
+    if has_white_background:
+        img = 255 - img
+    
+    return img
 
+def clean_image(img):
     size_clean = 28
     clean_image = np.zeros((size_clean, size_clean), dtype=int)
+    
+    if (clean_image.shape == img.shape) :
+        return img
 
     i_step = img.shape[0] / size_clean
     j_step = img.shape[1] / size_clean

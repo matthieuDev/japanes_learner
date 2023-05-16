@@ -1,4 +1,3 @@
-import csv
 import numpy as np
 import tensorflow as tf
 
@@ -52,14 +51,6 @@ def generate_model(save_file='model.h5'):
 
     model.save(save_file)
 
-def load_model(load_file='model.h5'):
-    return tf.keras.models.load_model(load_file)
-
-def load_categories():
-    with open('k49_classmap.csv', encoding='utf8') as f :
-        csv_characters = csv.reader(f, delimiter=',')
-        next(csv_characters)
-        return np.array([symbol for _, _, symbol in csv_characters])
     
 
 if __name__ == '__main__' :
