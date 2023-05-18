@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np, numba as nb
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -38,9 +38,6 @@ def clean_image(img):
     size_clean = 28
     clean_image = np.zeros((size_clean, size_clean), dtype=float)
     
-    if (clean_image.shape == img.shape) :
-        return img
-    
     #delete lines and columns that are empty
     line_ok = (img > 20).any(axis=1)
     column_ok = (img > 20).any(axis=0)
@@ -50,17 +47,36 @@ def clean_image(img):
 
     img = img[start_line: end_line, start_column: end_column]
     
+    if (clean_image.shape == img.shape) :
+        return img
+    
+    img = img.astype(float)
+    
+    numba_clean (img, clean_image)
+
+    return np.round(clean_image)
+
+@nb.njit()
+def numba_clean (img, clean_image):
+    size_clean = 28
+
     i_step = img.shape[0] / size_clean
     j_step = img.shape[1] / size_clean
     
     for i_clean, i_img in enumerate(np.arange(0, img.shape[0], i_step)) :
+        #arrange sometimes do not end before the upper limit
+        if i_img >= img.shape[0] :
+            continue
         i_img_ceil = ceil(i_img)
         i_img_up_decimal_number = i_img_ceil - i_img
 
         i_next_img = i_img + i_step
         next_i_img_floor = floor(i_next_img)
         next_i_img_decimal_number = i_next_img - next_i_img_floor
-        for j_clean, j_img in enumerate(np.arange(0, img.shape[1], j_step)) :            
+        for j_clean, j_img in enumerate(np.arange(0, img.shape[1], j_step)) :
+            #arrange sometimes do not end before the upper limit
+            if j_img >= img.shape[1] :
+                continue
             j_img_ceil = ceil(j_img)
             j_img_up_decimal_number = j_img_ceil - j_img
 
@@ -69,7 +85,7 @@ def clean_image(img):
             next_j_img_decimal_number = j_next_img - next_j_img_floor
             
             clean_image[i_clean, j_clean] = (
-                np.sum(img[i_img_ceil: next_i_img_floor, j_img_ceil: next_j_img_floor], dtype=int) +
+                np.sum(img[i_img_ceil: next_i_img_floor, j_img_ceil: next_j_img_floor]) +
                 
                 np.sum(img[floor(i_img), j_img_ceil: next_j_img_floor]) * i_img_up_decimal_number +
                 np.sum(img[i_img_ceil: next_i_img_floor, floor(j_img)]) * j_img_up_decimal_number +
@@ -91,10 +107,9 @@ def clean_image(img):
                 if next_i_img_decimal_number :
                     clean_image[i_clean, j_clean] +=\
                         img[next_i_img_floor, next_j_img_floor] * next_i_img_decimal_number * next_j_img_decimal_number
-            
-    clean_image = np.round(clean_image / (i_step * j_step))
 
-    return clean_image
+            
+            clean_image[i_clean, j_clean] /= (i_step * j_step)
 
 def print_img (img_arr):
     plt.imshow(img_arr)
