@@ -31,11 +31,13 @@ def generate_model(save_file='model.h5'):
 
     model = tf.keras.Sequential([
         tf.keras.layers.Reshape((28, 28, 1), input_shape=(28, 28)),
-        tf.keras.layers.Conv2D(25, (5, 5)),
-        tf.keras.layers.MaxPooling2D((4, 4)),
+        tf.keras.layers.Conv2D(32, (3, 3), activation='relu'),
+        tf.keras.layers.MaxPooling2D((2, 2)),
+        tf.keras.layers.Dropout(0.1),
         
-        tf.keras.layers.Conv2D(100, (3, 3)),
-        tf.keras.layers.MaxPooling2D((4, 4)),
+        tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+        tf.keras.layers.MaxPooling2D((2, 2)),
+        tf.keras.layers.Dropout(0.1),
         
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(100, activation='relu'),
