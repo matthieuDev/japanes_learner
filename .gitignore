@@ -2,6 +2,7 @@
 **/*.npz
 **/*.csv
 **/__pycache__/
+**/*.h5
 
 test/
 image_letter_classifier/data/

@@ -31,11 +31,11 @@ def get_start_stop_true (arr_ok) :
         
     return good_start, good_end + 1
 
-def clean_image(img):
+def clean_image(img, size_clean = 28):
     '''
     
     '''
-    size_clean = 28
+    
     clean_image = np.zeros((size_clean, size_clean), dtype=float)
     
     #delete lines and columns that are empty
@@ -52,13 +52,12 @@ def clean_image(img):
     
     img = img.astype(float)
     
-    numba_clean (img, clean_image)
+    numba_clean (img, clean_image, size_clean)
 
     return np.round(clean_image)
 
 @nb.njit()
-def numba_clean (img, clean_image):
-    size_clean = 28
+def numba_clean (img, clean_image, size_clean):
 
     i_step = img.shape[0] / size_clean
     j_step = img.shape[1] / size_clean

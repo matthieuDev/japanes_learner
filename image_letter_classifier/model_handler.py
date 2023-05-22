@@ -17,12 +17,14 @@ def load_categories(categories_file='data/k49_classmap.csv'):
         return np.array([symbol for _, _, symbol in csv_characters])
     
 class model_handler :
-    def __init__ (self, load_file='model.h5', categories_file='data/k49_classmap.csv'):
+    def __init__ (self, load_file='model.h5', categories_file='data/k49_classmap.csv', size_img = 28):
         self.model = load_model(load_file)
         self.categories = load_categories(categories_file)
+        self.size_img = size_img
 
     def predict(self, img):
-        img = clean_image(img)
+        print('iiiiiiiiiiimg', img.shape)
+        img = clean_image(img, self.size_img)
         img = img[np.newaxis, :, :, np.newaxis]
         prediction = self.model.predict(img)
         return self.categories[prediction.argmax()]
