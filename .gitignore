@@ -5,6 +5,8 @@
 **/*.h5
 
 test/
-image_letter_classifier/data/
 
+command_prompt_learner/test.ipynb
+
+image_letter_classifier/data/
 image_letter_classifier/Untitled.ipynb
