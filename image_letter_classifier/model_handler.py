@@ -23,8 +23,7 @@ class model_handler :
         self.size_img = size_img
 
     def predict(self, img):
-        print('iiiiiiiiiiimg', img.shape)
         img = clean_image(img, self.size_img)
-        img = img[np.newaxis, :, :, np.newaxis]
+        img = img[np.newaxis, :, :, np.newaxis] / 255
         prediction = self.model.predict(img)
         return self.categories[prediction.argmax()]

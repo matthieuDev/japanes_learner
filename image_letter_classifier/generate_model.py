@@ -105,5 +105,5 @@ def generate_model_dense(save_file='model_densenet.h5'):
     
 
 if __name__ == '__main__' :
-    #generate_model()
+    generate_model()
     generate_model_dense()
