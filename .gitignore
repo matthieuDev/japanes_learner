@@ -4,9 +4,11 @@
 **/__pycache__/
 **/*.h5
 
-test/
+japanese_learner.egg-info/
 
-command_prompt_learner/test.ipynb
+scripts/test/
 
-image_letter_classifier/data/
-image_letter_classifier/Untitled.ipynb
+scripts/command_prompt_learner/test.ipynb
+
+scripts/image_letter_classifier/data/
+scripts/image_letter_classifier/Untitled.ipynb
