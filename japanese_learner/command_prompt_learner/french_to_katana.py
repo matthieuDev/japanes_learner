@@ -1,7 +1,7 @@
 '''
 
 '''
-import json, epitran
+import json, epitran, japanese_learner
 from nltk import ngrams
 
 change_phon = {
@@ -20,7 +20,7 @@ class french_to_katana:
     def __init__(self, which_alphabet='hiragana', epitran_code='fra-Latn') :
         assert which_alphabet in ('hiragana', 'katakana')
         
-        save_file = f'{which_alphabet}2letter.json'
+        save_file = f'{japanese_learner.__path__[0]}/command_prompt_learner/{which_alphabet}2letter.json'
         with open (save_file, encoding='utf8') as f :
             self.translator2letters = json.load(f)
         self.epi = epitran.Epitran(epitran_code)
