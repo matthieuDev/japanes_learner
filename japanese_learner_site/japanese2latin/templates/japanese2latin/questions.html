@@ -1,6 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<body>
+
 {% for question in questions %}
 <ul>
-    <li>{{ question.japanese_text }}</li>
-    <li>{{ question.latin_text }}</li>
+    <h1 id={{ question.latin_text }}>{{ question.japanese_text }}</h1>
+    <input type="text" latin={{ question.latin_text }} japanese={{ question.japanese_text }} size="100">
 </ul>
 {% endfor %}
+<input type="submit" value="Submit" onclick="GetResults()"/>
+
+<script src="{% static 'japanese2latin/questions.js' %}"></script>
+
+</body>
+</html>
