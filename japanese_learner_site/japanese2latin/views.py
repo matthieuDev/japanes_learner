@@ -10,7 +10,7 @@ f2k = french_to_katana()
 
 def japanese2latin_question(request) :
     questions = [
-        QuestionJapanese2latin(latin_text=word, japanese_text=f2k(word))
+        QuestionJapanese2latin(latin_text=word, japanese_text=f2k.fr2katakana(word))
         for word in ['être', 'hopital', 'avoir']
     ]
     context = { 'questions' : questions }
