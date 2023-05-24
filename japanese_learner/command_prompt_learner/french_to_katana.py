@@ -1,8 +1,10 @@
 '''
 
 '''
-import json, epitran, japanese_learner
+import epitran
 from nltk import ngrams
+
+from japanese_learner.data.load_data import translater2letter_loader
 
 change_phon = {
     'ɛ': 'ə',
@@ -18,11 +20,10 @@ change_phon = {
 
 class french_to_katana:
     def __init__(self, which_alphabet='hiragana', epitran_code='fra-Latn') :
-        assert which_alphabet in ('hiragana', 'katakana')
+        assert which_alphabet in translater2letter_loader
         
-        save_file = f'{japanese_learner.__path__[0]}/command_prompt_learner/{which_alphabet}2letter.json'
-        with open (save_file, encoding='utf8') as f :
-            self.translator2letters = json.load(f)
+        
+        self.translator2letters = translater2letter_loader[which_alphabet]()
         self.epi = epitran.Epitran(epitran_code)
 
         self.phon_translator2letters = {

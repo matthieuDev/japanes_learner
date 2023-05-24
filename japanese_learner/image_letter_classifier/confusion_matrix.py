@@ -8,6 +8,8 @@ import matplotlib.image as mpimg
 from model_handler import load_categories, load_model
 from generate_model import load_test
 
+from japanese_learner.data.load_data import load_hiragana2letter
+
 (x_test, y_test) =  load_test()
 model = load_model()
 
@@ -20,8 +22,7 @@ for i, j in zip(y_test, y_pred) :
 
 
 categories = load_categories()
-with open('../command_prompt_learner/hiragana2letter.json', encoding='utf8') as f:
-    hiragana2letter = json.load(f)
+hiragana2letter = load_hiragana2letter()
 categories = np.array([hiragana2letter.get(x) for x in categories] )
 
 plt.figure(figsize=(20, 20))

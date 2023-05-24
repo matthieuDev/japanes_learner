@@ -1,9 +1,8 @@
-import json
-from random import choice
 
-save_file = 'hiragana2letter.json'
-with open (save_file, encoding='utf8') as f :
-    translator2letters = json.load(f)
+from random import choice
+from japanese_learner.data.load_data import load_hiragana2letter
+
+translator2letters = load_hiragana2letter()
 
 set_sap_letter = list(translator2letters)
 
