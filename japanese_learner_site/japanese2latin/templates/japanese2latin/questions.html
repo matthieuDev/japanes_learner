@@ -5,7 +5,7 @@
 
 {% for question in questions %}
 <ul>
-    <h1 id={{ question.latin_text }}>{{ question.japanese_text }}</h1>
+    <h1 id="question" latin={{ question.latin_text }}>{{ question.japanese_text }}</h1>
     <input type="text" latin={{ question.latin_text }} japanese={{ question.japanese_text }} size="100">
 </ul>
 {% endfor %}

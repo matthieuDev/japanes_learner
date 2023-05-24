@@ -3,6 +3,12 @@ const resultString = document.querySelector('h2#result');
 const buttonSubmit = document.querySelector('input#submit');
 
 const GetResults = () => {
+
+    // show good answers
+    document.querySelectorAll('h1#question').forEach(h1 => {
+        h1.innerText = `${h1.innerText} : ${h1.getAttribute('latin')}`
+    });
+    
     const listInput = document.querySelectorAll('input[latin]');
     listInput.forEach( inp => {
         goodResults += inp.getAttribute('latin') === inp.value.trim().toLowerCase() ;

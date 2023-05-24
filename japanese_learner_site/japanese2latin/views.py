@@ -8,11 +8,10 @@ from japanese_learner.command_prompt_learner.french_to_katana import french_to_k
 
 f2k = french_to_katana()
 
+NB_QUESTIONS_BY_TEST = 10
+
 def japanese2latin_question(request) :
-    questions = [
-        QuestionJapanese2latin(latin_text=word, japanese_text=f2k.fr2katakana(word))
-        for word in ['être', 'hopital', 'avoir']
-    ]
+    questions = QuestionJapanese2latin.objects.order_by('?')[:NB_QUESTIONS_BY_TEST]
     context = { 'questions' : questions }
 
     template = loader.get_template("japanese2latin/questions.html")
