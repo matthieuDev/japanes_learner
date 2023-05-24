@@ -9,7 +9,9 @@
     <input type="text" latin={{ question.latin_text }} japanese={{ question.japanese_text }} size="100">
 </ul>
 {% endfor %}
-<input type="submit" value="Submit" onclick="GetResults()"/>
+
+<input id="submit" type="submit" value="Submit" onclick="GetResults()"/>
+<h2 id="result"></h2>
 
 <script src="{% static 'japanese2latin/questions.js' %}"></script>
 
