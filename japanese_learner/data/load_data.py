@@ -17,3 +17,8 @@ translater2letter_loader = {
     'hiragana' : load_hiragana2letter,
     'katakana' : load_katakana2letter,
 }
+
+def load_most_used_words_fr() :
+    with open (data_folder + 'most_used_words_fr.json', encoding='utf8') as f :
+        load_most_used_words = json.load(f)
+    return load_most_used_words
