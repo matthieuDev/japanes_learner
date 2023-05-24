@@ -6,9 +6,12 @@
 
 japanese_learner.egg-info/
 
-scripts/test/
+japanese_learner/test/
 
-scripts/command_prompt_learner/test.ipynb
+japanese_learner/command_prompt_learner/test.ipynb
+japanese_learner/image_letter_classifier/data/
+japanese_learner/image_letter_classifier/Untitled.ipynb
 
-scripts/image_letter_classifier/data/
-scripts/image_letter_classifier/Untitled.ipynb
+japanese_learner_site/db.sqlite3
+japanese_learner_site/data_init_japanese2latin.json
+japanese_learner_site/japanese2latin/data_init.json
