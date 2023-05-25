@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "japanese2latin.apps.Japanese2LatinConfig",
+    "latin2japanese.apps.Latin2JapaneseConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
