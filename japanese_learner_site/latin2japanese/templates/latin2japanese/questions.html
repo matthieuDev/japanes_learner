@@ -3,9 +3,38 @@
 <html>
 <body>
 
-
 <h1 id="latin" latin={{ question.latin_text }} japanese={{ question.japanese_text }}>{{ question.latin_text }}</h1>
 <h1 id="japan" latin={{ question.japanese_text }} japanese={{ question.japanese_text }}>{{ question.japanese_text }}</h1>
+<br>
+
+<canvas id="myCanvas" width="512" height="512" style="border:1px solid #d3d3d3;"></canvas> 
+
+<script>
+    let canvas = document.getElementById("myCanvas");
+    const rect = canvas.getBoundingClientRect();
+    let ctx = canvas.getContext("2d");
+
+    let isDrawing = false;
+
+    const InitDraw = (event) => {
+        ctx.moveTo(event.clientX - rect.left, event.clientY - rect.top);
+        isDrawing = true;
+    }
+    const Draw = (event) => {
+        if (!isDrawing) return;
+        console.log(event.clientX - rect.left, event.clientY - rect.top);
+        ctx.lineTo(event.clientX - rect.left, event.clientY - rect.top);
+        ctx.stroke(); 
+    }
+    const EndDraw = (event) => {
+        isDrawing = false;
+    }
+    canvas.onmousedown  = InitDraw;
+    canvas.onmousemove = Draw;
+    canvas.onmouseup  = EndDraw;
+    canvas.onmouseleave  = EndDraw;
+</script>
+
 
 </body>
 </html>
