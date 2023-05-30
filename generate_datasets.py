@@ -22,9 +22,14 @@ with open('japanese_learner_site/japanese2latin/data_init.json', 'w', encoding='
     json.dump(to_save_most_used_words_fr, f, indent=2)
 
 hiragana2letter = load_hiragana2letter()
+hiragana2letter = {
+    hiragana: latin
+    for i, (hiragana, latin) in enumerate(hiragana2letter.items())
+    if len(hiragana) == 1 and hiragana != 'ゝ'
+}
 latin2hiragana = [
     {
-        "model": "japanese2latin.QuestionLatin2japanese",
+        "model": "latin2japanese.QuestionLatin2japanese",
         "pk": i,
         "fields": {
             "latin_text": latin,
@@ -32,6 +37,7 @@ latin2hiragana = [
         }
     }
     for i, (hiragana, latin) in enumerate(hiragana2letter.items())
+    if len(hiragana) == 1 and hiragana != 'ゝ'
 ]
 with open('japanese_learner_site/latin2japanese/data_init.json', 'w', encoding='utf8') as f :
     json.dump(latin2hiragana, f, indent=2)
