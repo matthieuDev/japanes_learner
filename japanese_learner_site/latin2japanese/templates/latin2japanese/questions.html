@@ -15,6 +15,7 @@
     let ctx = canvas.getContext("2d");
 
     let isDrawing = false;
+    ctx.lineWidth = 15;
 
     const InitDraw = (event) => {
         ctx.moveTo(event.clientX - rect.left, event.clientY - rect.top);
