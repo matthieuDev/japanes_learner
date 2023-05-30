@@ -20,4 +20,5 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('japanese2latin/', include('japanese2latin.urls')),
+    path('latin2japanese/', include('latin2japanese.urls')),
 ]
