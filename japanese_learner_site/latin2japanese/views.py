@@ -4,6 +4,7 @@ import matplotlib.image as mpimg
 
 from django.http import HttpResponse
 from django.template import loader
+from django.http.response import HttpResponse
 
 from japanese_learner.image_letter_classifier.model_handler import model_handler
 from .models import QuestionLatin2japanese
@@ -28,7 +29,7 @@ def get_img_letter(request) :
     img = io.BytesIO(img)
     img = mpimg.imread(img, format='JPG')[:,:,3] * 255
 
-    res = md.predict(img)
+    res = str(md.predict(img))
     print(res)
 
-    return res
+    return HttpResponse(res)
