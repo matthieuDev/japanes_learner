@@ -5,8 +5,8 @@ import numpy as np, json
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-from model_handler import load_categories, load_model
-from generate_model import load_test
+from .model_handler import load_categories, load_model
+from .generate_model import load_test
 
 from japanese_learner.data.load_data import load_hiragana2letter
 
