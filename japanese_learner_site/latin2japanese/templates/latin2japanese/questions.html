@@ -8,6 +8,10 @@
 <br>
 
 <canvas id="myCanvas" width="512" height="512" style="border:1px solid #d3d3d3;"></canvas> 
+<br>
+<br>
+<button type="button" onclick="checkImg()">Check</button>
+
 
 <script>
     let canvas = document.getElementById("myCanvas");
@@ -34,6 +38,29 @@
     canvas.onmousemove = Draw;
     canvas.onmouseup  = EndDraw;
     canvas.onmouseleave  = EndDraw;
+
+    const getCookie = name => {
+        if (document.cookie && document.cookie !== '') {
+            for (let cookie of document.cookie.split(';')) {
+                cookie = cookie.trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length) === name) {
+                    return decodeURIComponent(cookie.substring(name.length + 1));
+                }
+            }
+        }
+    }
+    var csrftoken = getCookie('csrftoken');
+    const checkImg = () => {
+        const request = new XMLHttpRequest();
+        request.open('POST', '/latin2japanese/check/', true);
+        request.setRequestHeader('X-CSRFToken', csrftoken);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({
+            "img": canvas.toDataURL(),
+        }));
+    }
+
 </script>
 
 
