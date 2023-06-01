@@ -1,4 +1,4 @@
-import base64, io, json, os
+import base64, io, json, os, random
 
 import matplotlib.image as mpimg
 
@@ -14,7 +14,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 md = model_handler()
 
 def latin2japanese_question(request) :
-    question = QuestionLatin2japanese(latin_text = 'a', japanese_text= "\u3042")
+    question = random.choice(list(QuestionLatin2japanese.objects.all()))
     context = { 'question' : question }
 
     template = loader.get_template("latin2japanese/questions.html")
