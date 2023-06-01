@@ -10,6 +10,7 @@
 <br>
 <h1 id="check"></h1>
 <br>
+<button type="button" onclick="Reset()">Reset</button>
 <button type="button" onclick="CheckImg()">Check</button>
 <button type="button" onclick="SendAnswer()">Answer</button>
 <br>
@@ -21,12 +22,15 @@
     const rect = canvas.getBoundingClientRect();
     let ctx = canvas.getContext("2d");
     
-
+    const Reset = () => {
+        ctx.reset();
+    }
 
     let isDrawing = false;
-    ctx.lineWidth = 15;
 
     const InitDraw = (event) => {
+        ctx.fillStyle = "black";
+        ctx.lineWidth = 15;
         ctx.moveTo(event.clientX - rect.left, event.clientY - rect.top);
         isDrawing = true;
     }
