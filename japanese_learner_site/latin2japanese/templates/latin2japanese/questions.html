@@ -10,9 +10,9 @@
 <br>
 <h1 id="check"></h1>
 <br>
-<button type="button" onclick="Reset()">Reset</button>
-<button type="button" onclick="CheckImg()">Check</button>
-<button type="button" onclick="SendAnswer()">Answer</button>
+<button id="resetButton" type="button" onclick="Reset()">Reset</button>
+<button id="checkButton" type="button" onclick="CheckImg()">Check</button>
+<button id="SendButton" type="button" onclick="SendAnswer()" style="display: none;">Answer</button>
 <br>
 <h1 id="result"></h1>
 
@@ -66,6 +66,7 @@
         request.onreadystatechange = () => {
             if (request.readyState == XMLHttpRequest.DONE) {
                 document.querySelector('h1#check').textContent = request.responseText;
+                document.querySelector('button#SendButton').style.display = "block";;
             }
         }
 
