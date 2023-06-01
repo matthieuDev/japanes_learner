@@ -12,9 +12,8 @@
 <button id="resetButton" type="button" onclick="Reset()">Reset</button>
 <button id="checkButton" type="button" onclick="CheckImg()">Check</button>
 <button id="SendButton" type="button" onclick="SendAnswer()" style="display: none;">Answer</button>
-<button id="newQuestionButton" type="button" onclick="location.href='/latin2japanese'" >New Question</button>
-<br>
 <h1 id="result"></h1>
+<button id="newQuestionButton" type="button" onclick="location.href='/latin2japanese'" style="display: none;">New Question</button>
 
 
 <script>
@@ -90,6 +89,7 @@
             resultDiv.textContent = `Bad result, expected: ${expectedAnswer}`;
             resultDiv.style.color = "red";
         }
+        document.querySelector('button#newQuestionButton').style.display = "block";;
     }
 
 </script>
