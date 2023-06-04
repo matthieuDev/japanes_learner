@@ -1,6 +1,8 @@
 
 # japanese_learner_site
 
+Use python manage.py runserver to run
+
 ## japanese2latin
 
 You have a list of words written with Hiragana, and you have to find the original word.
@@ -14,6 +16,8 @@ And next press the Submit button. The good answers will be displayed next to the
 ![Alt text](README_img/answer_j2l.png)
 
 Click on the "New Test" button or refresh the page to have the next question
+
+TODO: some syllable are buggy
 
 
 ## latin2japanese
@@ -32,6 +36,12 @@ Once you have your expected letter, click on Answer to see if you had the good a
 ![Alt text](README_img/answer_l2j.png)
 
 Click on the "New Question" button or refresh the page to have the next question
+
+TODO: The character detector can be improved 
+
+Bug on the dakuten
+
+some letters are more buggy (need better training dataset)
 
 ## Init data
 
