@@ -1,11 +1,16 @@
+
 # japanese_learner
 
-### image_letter_classifier
+Repo to help learning Japanese letters (mainly Hiragana)
 
-learner on command prompt 
+### japanese_learner
 
-### image_letter_classifier
+Module containing the backend 
 
-Detect letter drawn on a jpg.
+### japanese_learner_site
 
-Need to download Kuzushiji-49 datasets at https://github.com/rois-codh/kmnist and put it in image_letter_classifier/data/.
+Site Django to learn Hiragana. Has 2 main pages:
+
+- japanese2latin : You have a list of words written with Hiragana, and you have to find the original word.
+
+- latin2japanses: You have a Hiragana in Latin letters, and you have to draw the corresponding Hiragana.
